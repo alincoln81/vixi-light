@@ -15,9 +15,9 @@ npm run dev
 ```
 
 3. Access the application:
-- Producer: http://localhost:3000/producer.html
-- Input: http://localhost:3000/input.html
-- Output: http://localhost:3000/output.html
+- Producer: http://localhost:3000/producer
+- Input: http://localhost:3000/input
+- Output: http://localhost:3000/output
 
 ## Deployment
 

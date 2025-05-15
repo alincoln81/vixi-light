@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
@@ -11,7 +12,21 @@ const io = socketIo(server, {
     }
 });
 
-app.use(express.static('public')); // Serve your static files (input/output/producer UIs)
+// Serve static files from the public directory
+app.use(express.static('public'));
+
+// Add specific routes for each page
+app.get('/producer', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'producer.html'));
+});
+
+app.get('/input', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'input.html'));
+});
+
+app.get('/output', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'output.html'));
+});
 
 // Add a health check endpoint
 app.get('/health', (req, res) => {
