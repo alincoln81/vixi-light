@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    
+    <!-- MDI Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/uikit_overrides.css">
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+
+</head>
+<body class="uk-flex uk-flex-center uk-flex-middle">
+
+    <!-- Add a div that is 800x1600px and vertically and horizontally centered -->
+    <div id="input-container">
+        <div class="uk-grid" uk-grid>
+            <!-- Logo -->
+            <div id="input-logo" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-bottom">
+                <img src="assets/input-logo.png" alt="Logo" id="">
+            </div>
+
+            <!-- Waiting Screen -->
+            <div id="waiting-screen" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-large-bottom uk-flex uk-flex-center uk-flex-middle">
+                <h1>Waiting for Polling to Start...</h1>
+            </div>
+
+            <!-- Question -->
+            <div id="user-question-container" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-large-bottom uk-flex uk-flex-center uk-flex-middle" style="display: none;">
+                <h1 id="user-question-text">Question Goes Here</h1>
+            </div>
+            <!-- Answers -->
+            <div id="user-answer-1" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-bottom" style="display: none;">
+                <button id="user-answer-button-1" class="uk-button uk-button-answer">Answer Text Goes Here</button>
+            </div>
+            <div id="user-answer-2" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-bottom" style="display: none;">
+                <button id="user-answer-button-2" class="uk-button uk-button-answer">Answer Text Goes Here</button>
+            </div>
+            <div id="user-answer-3" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-bottom" style="display: none;">
+                <button id="user-answer-button-3" class="uk-button uk-button-answer">Answer Text Goes Here</button>
+            </div>
+            <div id="user-answer-4" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-bottom" style="display: none;">
+                <button id="user-answer-button-4" class="uk-button uk-button-answer">Answer Text Goes Here</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="js/input.js"></script>
+</body>
+</html> 

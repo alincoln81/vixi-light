@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    
+    <!-- MDI Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/uikit_overrides.css">
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+
+</head>
+<body class="uk-flex uk-flex-center uk-flex-middle">
+
+    <!-- Waiting Screen -->
+    <div id="output-waiting-screen" class="uk-text-center uk-flex uk-flex-center uk-flex-middle">
+        <h1>Waiting for Polling to Start...</h1>
+    </div>
+    
+    <!-- Add a div that is 1920x1080px and vertically and horizontally centered -->
+    <div id="output-container" style="display: none;">
+        <div class="uk-grid" uk-grid>
+            <!-- Question -->
+            <div class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-large-bottom">
+                <h1 id="question-text">Question Goes Here</h1>
+            </div>
+            <!-- QR & Logo -->
+            <div class="uk-width-auto uk-text-center">
+                <div id="qr-logo" class="uk-grid" uk-grid>
+                    <div id="qr" class="uk-width-1-1"></div>
+                    <div id="logo" class="uk-width-1-1"></div>
+                </div>
+            </div>
+            <!-- Divider -->
+            <div class="uk-width-auto"> </div>
+            <!-- Answers -->
+            <div class="uk-width-expand uk-text-center">
+                <div id="answers" class="uk-grid uk-grid-collapse" uk-grid>
+                    <div id="answer-1" class="uk-width-1-2" style="display: none;">
+                        <div class="uk-grid" uk-grid>
+                            <div id="answer-image-1" class="uk-padding-remove-left uk-width-auto answer-image uk-text-center uk-flex uk-flex-center uk-flex-middle"></div>
+                            <div class="answer-text-container uk-width-expand uk-flex uk-flex-start uk-flex-middle">
+                                <h3 id="answer-text-1" class="uk-text-left">Answer Text Goes Here</h3>
+                            </div>
+                            <div class="uk-width-1-1 uk-padding-remove-left uk-margin-small-top" style="position: relative;">
+                                <progress id="js-progressbar-1" class="uk-progress uk-margin-remove-bottom" value="0" max="100"></progress>
+                                <span id="progress-overlay-1" 
+                                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
+                                    width: 100%; text-align: center; font-weight: bold; color: var(--text-color, #222); 
+                                    pointer-events: none;">0%
+                                </span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div id="answer-2" class="uk-width-1-2" style="display: none;">
+                        <div class="uk-grid" uk-grid>
+                            <div id="answer-image-2" class="uk-padding-remove-left uk-width-auto answer-image uk-text-center uk-flex uk-flex-center uk-flex-middle"></div>
+                            <div class="answer-text-container uk-width-expand uk-flex uk-flex-start uk-flex-middle">
+                                <h3 id="answer-text-2" class="uk-text-left">Answer Text Goes Here</h3>
+                            </div>
+                            <div class="uk-width-1-1 uk-padding-remove-left uk-margin-small-top" style="position: relative;">
+                                <progress id="js-progressbar-2" class="uk-progress uk-margin-remove-bottom" value="0" max="100"></progress>
+                                <span id="progress-overlay-2" 
+                                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
+                                    width: 100%; text-align: center; font-weight: bold; color: var(--text-color, #222); 
+                                    pointer-events: none;">0%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="answer-3" class="uk-width-1-2" style="display: none;">
+                        <div class="uk-grid" uk-grid>
+                            <div id="answer-image-3" class="uk-padding-remove-left uk-width-auto answer-image uk-text-center uk-flex uk-flex-center uk-flex-middle"></div>
+                            <div class="answer-text-container uk-width-expand uk-flex uk-flex-start uk-flex-middle">
+                                <h3 id="answer-text-3" class="uk-text-left">Answer Text Goes Here</h3>
+                            </div>
+                            <div class="uk-width-1-1 uk-padding-remove-left uk-margin-small-top" style="position: relative;">
+                                <progress id="js-progressbar-3" class="uk-progress uk-margin-remove-bottom" value="0" max="100"></progress>
+                                <span id="progress-overlay-3" 
+                                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
+                                    width: 100%; text-align: center; font-weight: bold; color: var(--text-color, #222); 
+                                    pointer-events: none;">0%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="answer-4" class="uk-width-1-2" style="display: none;">
+                        <div class="uk-grid" uk-grid>
+                            <div id="answer-image-4" class="uk-padding-remove-left uk-width-auto answer-image uk-text-center uk-flex uk-flex-center uk-flex-middle"></div>
+                            <div class="answer-text-container uk-width-expand uk-flex uk-flex-start uk-flex-middle">
+                                <h3 id="answer-text-4" class="uk-text-left">Answer Text Goes Here</h3>
+                            </div>
+                            <div class="uk-width-1-1 uk-padding-remove-left uk-margin-small-top" style="position: relative;">
+                                <progress id="js-progressbar-4" class="uk-progress uk-margin-remove-bottom" value="0" max="100"></progress>
+                                <span id="progress-overlay-4" 
+                                    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); 
+                                    width: 100%; text-align: center; font-weight: bold; color: var(--text-color, #222); 
+                                    pointer-events: none;">0%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="js/output.js"></script>
+</body>
+</html> 

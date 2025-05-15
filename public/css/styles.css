@@ -1,0 +1,258 @@
+:root {
+    --primary-color: #D52265;
+    --secondary-color: #FEC651;
+    --tertiary-color: #51D9FE;
+    --quaternary-color: #4DBD74;
+    --text-color: #FFF;
+    --background-color: #1b1b1b;
+    --gray-100: #C5C5C5;
+    --gray-500: #333333;
+    --gray-700: #2C2C2C;
+    --gray-900: #262626;
+    --spacing-unit: 1rem;
+
+    --gray-100-10: rgba(197, 197, 197, 0.1);
+    --gray-100-25: rgba(197, 197, 197, 0.25);
+    --gray-100-50: rgba(197, 197, 197, 0.5);
+    --gray-100-75: rgba(197, 197, 197, 0.75);
+
+    --black-10: rgba(0, 0, 0, 0.1);
+    --black-25: rgba(0, 0, 0, 0.25);
+    --black-50: rgba(0, 0, 0, 0.5);
+    --black-75: rgba(0, 0, 0, 0.75);
+
+    --white: #ffffff;
+}
+
+body, html {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    width: 100vw;
+}
+
+#start-button, #stop-button, 
+#progress-button, #show-correct-button, 
+#next-button {
+    width: 150px;
+    margin-right: 20px;
+}
+
+#output-status.connected, #inputs-status.connected, #producer-status.connected {
+    color: var(--quaternary-color) !important;
+}
+
+#progress-button:active,
+#progress-button:focus,
+#show-correct-button:active,
+#show-correct-button:focus,
+#next-button:active,
+#next-button:focus {
+    background-color: var(--quaternary-color);
+}
+
+#output-container, #output-waiting-screen {
+    width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
+    padding: 80px !important;
+    background-color: var(--gray-900);
+    background-image: url('../assets/outputBG-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+#output-container h1, 
+#output-container h3, 
+#output-container span,
+#input-container h1 {
+    text-shadow: 1px 1px 2px var(--black-50);
+}
+
+#output-container > .uk-grid {
+    margin-left: 0px !important;
+}
+
+#qr-logo {
+    width: 360px;
+    height: 100%;
+}
+#qr-logo > div {
+    width: 100%;
+    height: 360px;
+    padding: 0px !important;
+}
+
+#qr {
+    background-image: url('../assets/thefamousgroup_qr.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+}
+
+#logo {
+   background-image: url('../assets/rams.png');
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+#answers {
+    height: 100%;
+}
+
+#answers > div {
+    padding: 0px 40px 40px 40px;
+    box-sizing: border-box;
+}
+
+.answer-text-container {
+    min-height: 250px;
+    width: 100%;
+    padding-left: 0px !important;
+    margin-left: 20px;
+}
+
+.answer-image {
+    width: 250px;
+    height: 250px;
+    background-color: var(--gray-100-10);
+    border-radius: 8px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#js-progressbar-1, #js-progressbar-2, #js-progressbar-3, #js-progressbar-4 {
+    height: 60px;
+    border-radius: 6px;
+    background-color: var(--black-50);
+}
+
+#js-progressbar-1::-webkit-progress-value, 
+#js-progressbar-2::-webkit-progress-value, 
+#js-progressbar-3::-webkit-progress-value, 
+#js-progressbar-4::-webkit-progress-value {
+    background: #ffd100 !important;
+}
+
+
+#js-progressbar-1.correct-progress::-webkit-progress-value, 
+#js-progressbar-2.correct-progress::-webkit-progress-value,
+#js-progressbar-3.correct-progress::-webkit-progress-value, 
+#js-progressbar-4.correct-progress::-webkit-progress-value { 
+    background: #003594 !important; 
+}
+#js-progressbar-1.correct-progress, 
+#js-progressbar-2.correct-progress,
+#js-progressbar-3.correct-progress, 
+#js-progressbar-4.correct-progress { 
+    border: 2px solid #ffffff !important; 
+}
+/* ================================================================================================================ */
+#input-container {
+    width: 800px;
+    height: 1600px;
+    margin: 0 auto;
+    padding:40px !important;
+    background-color: var(--gray-900);
+    background-image: url('../assets/outputBG-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+#waiting-screen {
+    width: 100%;
+    height: 1000px;
+    margin-left: 40px;
+}
+
+#user-question-container {
+    width: 100%;
+    height: 450px;
+    margin-left: 40px;
+    padding-right: 40px;
+}
+
+#user-question-text {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.uk-button-answer {
+    background-color: #ffd100;
+    border: 1px solid #ffd100;
+    color: var(--gray-900);
+    border-radius: 8px;
+    width: 100%;
+    height: 120px;
+    transition: all 0.3s ease-in-out;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.uk-button-answer.answer-button-selected, 
+.uk-button-answer.answer-button-selected:hover, 
+.uk-button-answer.answer-button-selected:active, 
+.uk-button-answer.answer-button-selected:focus,
+.uk-button-answer.active, 
+.uk-button-answer:hover, 
+.uk-button-answer:active, 
+.uk-button-answer:focus {
+    background-color: #003594;
+    border: 1px solid var(--gray-100-25);
+    color: var(--text-color);
+}
+
+.uk-button-answer.answer-button-disabled, 
+.uk-button-answer.answer-button-disabled:hover, 
+.uk-button-answer.answer-button-disabled:active, 
+.uk-button-answer.answer-button-disabled:focus {
+    background-color: #ffd100 !important;
+    border: 1px solid #ffd100 !important;
+    color: var(--gray-900) !important;
+}
+
+.uk-button-answer.correct-answer, 
+.uk-button-answer.answer-button-disabled.correct-answer {
+    background-color: #003594 !important;
+    border: 2px solid var(--white) !important;
+    color: var(--text-color) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    :root {
+        --spacing-unit: 0.75rem;
+    }
+} 
+
+@media (max-width: 1200px) {
+    #waiting-screen {
+        margin-left: 40px !important;
+    }
+    #user-question-container {
+        margin-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    .answer-text-container {
+        padding-left: 0px !important;
+    }
+}

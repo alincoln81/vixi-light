@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producer</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    
+    <!-- MDI Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/uikit_overrides.css">
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+
+</head>
+<body>
+
+    <div class="uk-grid uk-margin-large-top" uk-grid>
+
+        <div class="uk-width-1-1">
+            <div class="uk-card uk-card-body uk-card-default uk-container">
+                <h3><span class="mdi mdi-server"></span> Connection Stats</h3>
+                <!-- Connection Stats -->
+                <div id="connection-stats" class="uk-grid uk-grid-collapse" uk-grid>
+                    <div class="uk-width-expand">
+                        <p id="producer-status">
+                            <span class="mdi mdi-controller"></span>
+                            <span id="producer-status-text"> Producer Disconnected</span> 
+                            <span id="producer-status-icon" class="mdi mdi-check-circle-outline" style="display: none;"></span>
+                        </p>
+                    </div>
+                    <div class="uk-width-expand">
+                        <p id="output-status" class="uk-text-center">
+                            <span class="mdi mdi-application-outline"></span>
+                            <span id="output-status-text"> Output Disconnected</span> 
+                            <span id="output-status-icon" class="mdi mdi-check-circle-outline" style="display: none;"></span>
+                        </p>
+                    </div>
+                    <div class="uk-width-expand">
+                        <p id="inputs-status" class="uk-text-right">
+                            <span class="mdi mdi-cellphone"></span>
+                            <span id="inputs-status-text">Connected Inputs: 0</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-width-1-1">
+            <div class="uk-card uk-card-body uk-card-default uk-container">
+                <h3><span class="mdi mdi-controller"></span> Producer Controls</h3>
+                <!-- Progress Through Questions Buttons -->
+                <div class="uk-grid uk-grid-collapse" uk-grid>
+                    <div class="uk-width-auto">
+                        <button id="start-button" class="uk-button uk-button-default">Start</button>
+                    </div>
+                    <div class="uk-width-auto">
+                        <button id="stop-button" class="uk-button uk-button-primary" style="display: none;">Stop</button>
+                    </div>
+                    <div class="uk-width-auto">
+                        <button id="progress-button" class="uk-button uk-button-default" style="display: none;">Progress</button>
+                    </div>
+                    <div class="uk-width-auto">
+                        <button id="show-correct-button" class="uk-button uk-button-default" style="display: none;">Correct</button>
+                    </div>
+                    <div class="uk-width-auto">
+                        <button id="next-button" class="uk-button uk-button-default" style="display: none;">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+       
+    <!-- Custom JS -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="js/producer.js"></script>
+</body>
+</html> 

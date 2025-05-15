@@ -1,0 +1,156 @@
+/* UIkit Overrides */
+.uk-h1, .uk-h2, .uk-h3, 
+.uk-h4, .uk-h5, .uk-h6, 
+.uk-heading-2xlarge, .uk-heading-3xlarge, 
+.uk-heading-large, .uk-heading-medium, 
+.uk-heading-small, .uk-heading-xlarge, 
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Inter', sans-serif !important;
+    color: #ffffff !important;
+}
+
+/* Button overrides */
+.uk-button {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    border-radius: 6px;
+}
+
+.uk-button-default {
+    background-color: var(--gray-500);
+    border-color: var(--gray-500);
+    color: #ffffff;
+}
+
+.uk-button-default:hover {
+    background-color: color-mix(in srgb, var(--gray-500) 90%, black);
+    border-color: color-mix(in srgb, var(--gray-500) 90%, black);
+    color: #ffffff;
+}
+
+.uk-button-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.uk-button-primary:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 90%, black);
+    border-color: color-mix(in srgb, var(--primary-color) 90%, black);
+}
+
+.uk-button-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.uk-button-secondary:hover {
+    background-color: color-mix(in srgb, var(--secondary-color) 90%, black);
+    border-color: color-mix(in srgb, var(--secondary-color) 90%, black);
+}
+
+/* Card overrides */
+.uk-card {
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.uk-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.uk-card-default {
+    background-color: var(--gray-900);
+    border: 1px solid var(--gray-100-25);
+}
+
+/* Dropdown overrides */
+.uk-dropdown {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.uk-dropdown-nav > li > a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 8px 16px;
+}
+
+.uk-dropdown-nav > li > a:hover {
+    color: var(--primary-color);
+    background-color: rgba(30, 135, 240, 0.05);
+}
+
+/* Notification overrides */
+.uk-notification-message {
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+/* Form control overrides */
+.uk-input,
+.uk-select,
+.uk-textarea {
+    border-radius: 6px;
+    border-color: rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.uk-input:focus,
+.uk-select:focus,
+.uk-textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(30, 135, 240, 0.1);
+}
+
+/* Table overrides */
+.uk-table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.uk-table th {
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.uk-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Modal overrides */
+.uk-modal-dialog {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.uk-modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.uk-modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Navigation overrides */
+.uk-nav-default > li > a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 8px 16px;
+}
+
+.uk-nav-default > li > a:hover {
+    color: var(--primary-color);
+    background-color: rgba(30, 135, 240, 0.05);
+}
+
+/* Badge overrides */
+.uk-badge {
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+/* Progress bar overrides */
