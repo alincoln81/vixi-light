@@ -77,6 +77,12 @@ io.on('connection', (socket) => {
 
         if (type == 'input') {
             connectedInputs++;
+
+            // send the question to the input
+            if (gameActive) {
+                socket.emit('question', questions[currentQuestion]);
+            }
+
         } else if (type == 'output') {
             connectedOutputs++;
         } else if (type == 'producer') {
@@ -84,10 +90,6 @@ io.on('connection', (socket) => {
         }
 
         io.emit('update-connections', type, connectedInputs, connectedOutputs, connectedProducers);
-
-        if (gameActive && type == 'input') {
-            socket.emit('question', questions[currentQuestion]);
-        }
     });
 
     socket.on('disconnect', () => {

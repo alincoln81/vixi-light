@@ -94,6 +94,7 @@ socket.on('reset-progress-bar', () => {
         let bar = document.getElementById('js-progressbar-' + (i + 1));
         bar.value = 0;
         bar.classList.remove('correct-progress');
+        bar.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     }
 });
 
@@ -103,6 +104,7 @@ socket.on('show-correct', () => {
      if (currentQuestion.correctAnswer != null) {
         const bar = document.getElementById('js-progressbar-' + (currentQuestion.correctAnswer + 1));
         bar.classList.add('correct-progress');
+        bar.style.backgroundColor = 'rgba(255, 209, 0, 0.25)';
     } else {
         console.log("This is a Poll, there is no correct answer for this question");
     }
@@ -126,12 +128,19 @@ socket.on('answer', (answer) => {
         submittedAnswersTotal += submittedAnswers[i];
     }
 
+    let answerProgressTotal = 0;
+
     //Update the progress bar
     for (let i = 0; i < currentQuestion.values.length; i++) {
         const bar = document.getElementById('js-progressbar-' + (i + 1));
         const overlay = document.getElementById('progress-overlay-' + (i + 1));
         
-        let answerProgress = (submittedAnswers[i] / submittedAnswersTotal ) * 100;
+        let answerProgress = Math.round((submittedAnswers[i] / submittedAnswersTotal) * 100);
+        answerProgressTotal += answerProgress;
+
+        if (answerProgressTotal > 100) {
+            answerProgress--;
+        }
 
         console.log(i, 'Bar', bar);
         console.log(i, 'Answer Progress', answerProgress);

@@ -69,7 +69,7 @@ body, html {
     margin: 0 auto;
     padding: 80px !important;
     background-color: var(--gray-900);
-    background-image: url('../assets/outputBG-1.jpg');
+    background-image: url('../assets/outputBG.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -148,7 +148,7 @@ body, html {
 #js-progressbar-2::-webkit-progress-value, 
 #js-progressbar-3::-webkit-progress-value, 
 #js-progressbar-4::-webkit-progress-value {
-    background: #ffd100 !important;
+    background: #003594 !important; 
 }
 
 
@@ -156,22 +156,22 @@ body, html {
 #js-progressbar-2.correct-progress::-webkit-progress-value,
 #js-progressbar-3.correct-progress::-webkit-progress-value, 
 #js-progressbar-4.correct-progress::-webkit-progress-value { 
-    background: #003594 !important; 
+    background: #ffd100 !important;
 }
 #js-progressbar-1.correct-progress, 
 #js-progressbar-2.correct-progress,
 #js-progressbar-3.correct-progress, 
 #js-progressbar-4.correct-progress { 
-    border: 2px solid #ffffff !important; 
+    border: none !important; 
 }
 /* ================================================================================================================ */
 #input-container {
-    width: 800px;
-    height: 1600px;
+    width: 100vw;
+    height: 100vh;
     margin: 0 auto;
-    padding:40px !important;
+    padding: 0px 20px 20px 20px !important;
     background-color: var(--gray-900);
-    background-image: url('../assets/outputBG-1.jpg');
+    background-image: url('../assets/outputBG.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -180,29 +180,29 @@ body, html {
 
 #waiting-screen {
     width: 100%;
-    height: 1000px;
-    margin-left: 40px;
+    height: auto;
+    margin-left: 0px;
 }
 
 #user-question-container {
     width: 100%;
-    height: 450px;
-    margin-left: 40px;
-    padding-right: 40px;
+    height: 250px;
+    margin: 0px !important;
+    padding: 0px !important;
 }
 
 #user-question-text {
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 600;
 }
 
 .uk-button-answer {
-    background-color: #ffd100;
-    border: 1px solid #ffd100;
-    color: var(--gray-900);
+    background-color: #003594;
+    border: 1px solid v#003594;
+    color: var(--text-color);
     border-radius: 8px;
     width: 100%;
-    height: 120px;
+    height: 100px;
     transition: all 0.3s ease-in-out;
     font-size: 22px;
     font-weight: 600;
@@ -216,25 +216,25 @@ body, html {
 .uk-button-answer:hover, 
 .uk-button-answer:active, 
 .uk-button-answer:focus {
-    background-color: #003594;
-    border: 1px solid var(--gray-100-25);
-    color: var(--text-color);
+    background-color: #ffd100 !important;
+    border: 1px solid #ffd100 !important;
+    color: var(--gray-900) !important;
 }
 
 .uk-button-answer.answer-button-disabled, 
 .uk-button-answer.answer-button-disabled:hover, 
 .uk-button-answer.answer-button-disabled:active, 
 .uk-button-answer.answer-button-disabled:focus {
-    background-color: #ffd100 !important;
-    border: 1px solid #ffd100 !important;
-    color: var(--gray-900) !important;
+    background-color: #003594 !important;
+    border: 1px solid #003594 !important;
+    color: var(--text-color) !important;
 }
 
 .uk-button-answer.correct-answer, 
 .uk-button-answer.answer-button-disabled.correct-answer {
-    background-color: #003594 !important;
-    border: 2px solid var(--white) !important;
-    color: var(--text-color) !important;
+    background-color: #ffd100 !important;
+    border: 1px solid #ffd100 !important;
+    color: var(--gray-900) !important;
 }
 
 /* Responsive adjustments */
@@ -246,11 +246,11 @@ body, html {
 
 @media (max-width: 1200px) {
     #waiting-screen {
-        margin-left: 40px !important;
+        margin-left: 0px !important;
     }
     #user-question-container {
-        margin-left: 40px !important;
-        padding-right: 40px !important;
+        margin-left: 0px !important;
+        padding-right: 0px !important;
     }
     .answer-text-container {
         padding-left: 0px !important;

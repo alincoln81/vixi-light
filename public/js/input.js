@@ -104,6 +104,8 @@ socket.on('reset-progress-bar', () => {
         btn.classList.remove('answer-button-disabled');
         btn.classList.remove('answer-button-selected');
         btn.disabled = false;
+        btn.style.backgroundColor = '#003594';
+        btn.style.borderColor = '#003594';
     }
 });
 
