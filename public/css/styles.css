@@ -217,19 +217,13 @@ body, html {
 }
 
 .uk-button-answer.answer-button-selected, 
-.uk-button-answer.answer-button-selected:active, 
-.uk-button-answer.answer-button-selected:focus,
-.uk-button-answer.active,
-.uk-button-answer:active, 
-.uk-button-answer:focus {
+.uk-button-answer.active {
     background-color: #ffd100 !important;
     border: 1px solid #ffd100 !important;
     color: var(--gray-900) !important;
 }
 
-.uk-button-answer.answer-button-disabled, 
-.uk-button-answer.answer-button-disabled:active, 
-.uk-button-answer.answer-button-disabled:focus {
+.uk-button-answer.answer-button-disabled {
     background-color: #003594 !important;
     border: 1px solid #003594 !important;
     color: var(--text-color) !important;
@@ -258,21 +252,5 @@ body, html {
     }
     .answer-text-container {
         padding-left: 0px !important;
-    }
-}
-/* Show fancy hover effects only on devices that actually hover */
-@media (hover: hover) {
-
-    .uk-button-answer.answer-button-selected:hover, 
-    .uk-button-answer:hover {
-        background-color: #ffd100 !important;
-        border: 1px solid #ffd100 !important;
-        color: var(--gray-900) !important;
-    }
- 
-    .uk-button-answer.answer-button-disabled:hover {
-        background-color: #003594 !important;
-        border: 1px solid #003594 !important;
-        color: var(--text-color) !important;
     }
 }
