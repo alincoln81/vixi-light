@@ -39,8 +39,16 @@ body, html {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 100vh;
     width: 100vw;
+}
+
+#input-body, #input-html {
+    height: 100%;
+}
+
+#output-body, #output-html {
+    
+    height: 100vh;
 }
 
 #start-button, #stop-button, 
@@ -156,7 +164,7 @@ body, html {
 #js-progressbar-2.correct-progress::-webkit-progress-value,
 #js-progressbar-3.correct-progress::-webkit-progress-value, 
 #js-progressbar-4.correct-progress::-webkit-progress-value { 
-    background: #ffd100 !important;
+    background: #ff8200 !important;
 }
 #js-progressbar-1.correct-progress, 
 #js-progressbar-2.correct-progress,
@@ -198,7 +206,7 @@ body, html {
 
 .uk-button-answer {
     background-color: #003594;
-    border: 1px solid v#003594;
+    border: 1px solid #003594;
     color: var(--text-color);
     border-radius: 8px;
     width: 100%;
@@ -209,11 +217,9 @@ body, html {
 }
 
 .uk-button-answer.answer-button-selected, 
-.uk-button-answer.answer-button-selected:hover, 
 .uk-button-answer.answer-button-selected:active, 
 .uk-button-answer.answer-button-selected:focus,
-.uk-button-answer.active, 
-.uk-button-answer:hover, 
+.uk-button-answer.active,
 .uk-button-answer:active, 
 .uk-button-answer:focus {
     background-color: #ffd100 !important;
@@ -222,7 +228,6 @@ body, html {
 }
 
 .uk-button-answer.answer-button-disabled, 
-.uk-button-answer.answer-button-disabled:hover, 
 .uk-button-answer.answer-button-disabled:active, 
 .uk-button-answer.answer-button-disabled:focus {
     background-color: #003594 !important;
@@ -232,11 +237,10 @@ body, html {
 
 .uk-button-answer.correct-answer, 
 .uk-button-answer.answer-button-disabled.correct-answer {
-    background-color: #ffd100 !important;
-    border: 1px solid #ffd100 !important;
+    background-color: #ff8200 !important;
+    border: 1px solid #ff8200 !important;
     color: var(--gray-900) !important;
 }
-
 /* Responsive adjustments */
 @media (max-width: 640px) {
     :root {
@@ -254,5 +258,21 @@ body, html {
     }
     .answer-text-container {
         padding-left: 0px !important;
+    }
+}
+/* Show fancy hover effects only on devices that actually hover */
+@media (hover: hover) {
+
+    .uk-button-answer.answer-button-selected:hover, 
+    .uk-button-answer:hover {
+        background-color: #ffd100 !important;
+        border: 1px solid #ffd100 !important;
+        color: var(--gray-900) !important;
+    }
+ 
+    .uk-button-answer.answer-button-disabled:hover {
+        background-color: #003594 !important;
+        border: 1px solid #003594 !important;
+        color: var(--text-color) !important;
     }
 }

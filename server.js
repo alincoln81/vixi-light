@@ -75,6 +75,8 @@ io.on('connection', (socket) => {
         socket.clientType = type;
         console.log(`Client ${socket.id} registered as ${type}`);
 
+        console.log('SERVER: Game active:', gameActive);
+
         if (type == 'input') {
             connectedInputs++;
 
@@ -85,6 +87,12 @@ io.on('connection', (socket) => {
 
         } else if (type == 'output') {
             connectedOutputs++;
+
+            // send the question to the input
+            if (gameActive) {
+                socket.emit('question', questions[currentQuestion]);
+            }
+
         } else if (type == 'producer') {
             connectedProducers++;
         }

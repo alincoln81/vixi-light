@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="input-html">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Input</title>
     
     <!-- Google Fonts - Inter -->
@@ -23,13 +23,13 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
 
 </head>
-<body class="uk-flex uk-flex-center uk-flex-middle">
+<body id="input-body" class="uk-flex uk-flex-center uk-flex-middle">
 
     <!-- Add a div that is 800x1600px and vertically and horizontally centered -->
     <div id="input-container">
         <div class="uk-grid uk-grid-collapse" uk-grid>
             <!-- Logo -->
-            <div id="input-logo" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-bottom">
+            <div id="input-logo" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-small-bottom">
                 <img src="assets/input-logo.png" alt="Logo" id="">
             </div>
 
@@ -43,16 +43,16 @@
                 <h1 id="user-question-text">Question Goes Here</h1>
             </div>
             <!-- Answers -->
-            <div id="user-answer-1" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-remove" style="display: none;">
+            <div id="user-answer-1" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
                 <button id="user-answer-button-1" class="uk-button uk-button-answer">Answer Text Goes Here</button>
             </div>
-            <div id="user-answer-2" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-remove-bottom" style="display: none;">
+            <div id="user-answer-2" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
                 <button id="user-answer-button-2" class="uk-button uk-button-answer">Answer Text Goes Here</button>
             </div>
-            <div id="user-answer-3" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-remove-bottom" style="display: none;">
+            <div id="user-answer-3" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
                 <button id="user-answer-button-3" class="uk-button uk-button-answer">Answer Text Goes Here</button>
             </div>
-            <div id="user-answer-4" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-remove-bottom" style="display: none;">
+            <div id="user-answer-4" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
                 <button id="user-answer-button-4" class="uk-button uk-button-answer">Answer Text Goes Here</button>
             </div>
         </div>

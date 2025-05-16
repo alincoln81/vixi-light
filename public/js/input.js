@@ -106,6 +106,14 @@ socket.on('reset-progress-bar', () => {
         btn.disabled = false;
         btn.style.backgroundColor = '#003594';
         btn.style.borderColor = '#003594';
+
+        //clear button focus
+        const ghost = document.createElement('button');
+        ghost.style.all = 'unset';           // Invisible & non-intrusive
+        document.body.appendChild(ghost);
+        ghost.click();                       // Synthetic click moves hover
+        document.body.removeChild(ghost);
+
     }
 });
 
