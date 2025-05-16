@@ -164,7 +164,7 @@ body, html {
 #js-progressbar-2.correct-progress::-webkit-progress-value,
 #js-progressbar-3.correct-progress::-webkit-progress-value, 
 #js-progressbar-4.correct-progress::-webkit-progress-value { 
-    background: #ff8200 !important;
+    background: #ffd100 !important;
 }
 #js-progressbar-1.correct-progress, 
 #js-progressbar-2.correct-progress,
@@ -218,9 +218,10 @@ body, html {
 
 .uk-button-answer.answer-button-selected, 
 .uk-button-answer.active {
-    background-color: #ffd100 !important;
-    border: 1px solid #ffd100 !important;
-    color: var(--gray-900) !important;
+    background-color: #005AFA !important;
+    border: 1px solid #005AFA !important;
+    color: var(--text-color) !important;
+    background-image:rgba(255, 255, 255, 0.2);
 }
 
 .uk-button-answer.answer-button-disabled {
@@ -231,8 +232,8 @@ body, html {
 
 .uk-button-answer.correct-answer, 
 .uk-button-answer.answer-button-disabled.correct-answer {
-    background-color: #ff8200 !important;
-    border: 1px solid #ff8200 !important;
+    background-color: #ffd100 !important;
+    border: 1px solid #ffd100 !important;
     color: var(--gray-900) !important;
 }
 /* Responsive adjustments */

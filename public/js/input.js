@@ -1,4 +1,35 @@
-const socket = io();
+const socket = io({
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000,
+    reconnectionDelayMax: 5000,
+    timeout: 20000
+});
+
+// Handle connection errors
+socket.on('connect_error', (error) => {
+    console.error('Connection error:', error);
+});
+
+socket.on('connect_timeout', (timeout) => {
+    console.error('Connection timeout:', timeout);
+});
+
+socket.on('reconnect_attempt', (attemptNumber) => {
+    console.log('Reconnection attempt:', attemptNumber);
+});
+
+socket.on('reconnect', (attemptNumber) => {
+    console.log('Reconnected after', attemptNumber, 'attempts');
+});
+
+socket.on('reconnect_error', (error) => {
+    console.error('Reconnection error:', error);
+});
+
+socket.on('reconnect_failed', () => {
+    console.error('Failed to reconnect');
+});
 
 // Register as a specific client type
 socket.emit('register', 'input'); // or 'input' or 'output'
