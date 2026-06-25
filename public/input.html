@@ -25,41 +25,57 @@
 </head>
 <body id="input-body" class="uk-flex uk-flex-center uk-flex-middle">
 
-    <!-- Add a div that is 800x1600px and vertically and horizontally centered -->
     <div id="input-container">
         <div class="uk-grid uk-grid-collapse" uk-grid>
-            <!-- Logo -->
-            <div id="input-logo" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-small-bottom">
-                <img src="assets/input-logo.png" alt="Logo" id="">
+            <div id="input-logo-container" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-small-bottom">
+                <div id="input-logo"></div>
             </div>
 
-            <!-- Waiting Screen -->
             <div id="waiting-screen" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-large-bottom uk-flex uk-flex-center uk-flex-middle">
-                <h1>Waiting for Polling to Start...</h1>
+                <div class="input-waiting-content">
+                    <div class="input-waiting-ring" aria-hidden="true"></div>
+                    <h1>Waiting for the Game to Start...</h1>
+                    <p class="input-waiting-subtext">Get ready to cast your vote</p>
+                </div>
             </div>
 
-            <!-- Question -->
-            <div id="user-question-container" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-large-bottom uk-flex uk-flex-center uk-flex-middle" style="display: none;">
-                <h1 id="user-question-text">Question Goes Here</h1>
-            </div>
-            <!-- Answers -->
-            <div id="user-answer-1" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
-                <button id="user-answer-button-1" class="uk-button uk-button-answer">Answer Text Goes Here</button>
-            </div>
-            <div id="user-answer-2" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
-                <button id="user-answer-button-2" class="uk-button uk-button-answer">Answer Text Goes Here</button>
-            </div>
-            <div id="user-answer-3" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
-                <button id="user-answer-button-3" class="uk-button uk-button-answer">Answer Text Goes Here</button>
-            </div>
-            <div id="user-answer-4" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
-                <button id="user-answer-button-4" class="uk-button uk-button-answer">Answer Text Goes Here</button>
+            <div id="input-poll-stage" class="uk-width-1-1" style="display: none;">
+                <div class="input-vote-status-wrap" aria-live="polite">
+                    <p id="input-vote-status-a" class="input-vote-status input-vote-status-layer status-visible status-open">Tap your pick below</p>
+                    <p id="input-vote-status-b" class="input-vote-status input-vote-status-layer" aria-hidden="true"></p>
+                </div>
+
+                <div id="user-question-container" class="uk-width-1-1 uk-text-center uk-margin-top uk-margin-medium-bottom uk-flex uk-flex-center uk-flex-middle">
+                    <h1 id="user-question-text">Question Goes Here</h1>
+                </div>
+
+                <div id="user-answer-1" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
+                    <button id="user-answer-button-1" class="uk-button uk-button-answer" type="button">
+                        <span id="input-answer-image-1" class="input-answer-image" aria-hidden="true"></span>
+                        <span class="input-answer-label">Answer Text Goes Here</span>
+                    </button>
+                </div>
+                <div id="user-answer-2" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
+                    <button id="user-answer-button-2" class="uk-button uk-button-answer" type="button">
+                        <span id="input-answer-image-2" class="input-answer-image" aria-hidden="true"></span>
+                        <span class="input-answer-label">Answer Text Goes Here</span>
+                    </button>
+                </div>
+                <div id="user-answer-3" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
+                    <button id="user-answer-button-3" class="uk-button uk-button-answer" type="button">
+                        <span class="input-answer-label">Answer Text Goes Here</span>
+                    </button>
+                </div>
+                <div id="user-answer-4" class="uk-width-1-1 uk-text-center uk-margin-small-top uk-margin-remove-bottom" style="display: none;">
+                    <button id="user-answer-button-4" class="uk-button uk-button-answer" type="button">
+                        <span class="input-answer-label">Answer Text Goes Here</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Custom JS -->
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script src="js/input.js"></script>
 </body>
-</html> 
+</html>

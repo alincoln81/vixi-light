@@ -1,19 +1,15 @@
-// Variables
 const socket = io();
 
 var startButton;
 var stopButton;
 var progressButton;
-var showCorrectButton;
+var revealWinnerButton;
 var nextButton;
 var buttons = [];
 
-// Register as a specific client type
-socket.emit('register', 'producer'); // or 'input' or 'output'
+socket.emit('register', 'producer');
 
-// Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize
     startButton = document.getElementById('start-button');
     stopButton = document.getElementById('stop-button');
     startButton.addEventListener('click', () => {
@@ -26,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     progressButton.addEventListener('click', () => {
         updateProgressBar();
     });
-    showCorrectButton = document.getElementById('show-correct-button');
-    showCorrectButton.addEventListener('click', () => {
-        showCorrect();
+    revealWinnerButton = document.getElementById('reveal-winner-button');
+    revealWinnerButton.addEventListener('click', () => {
+        revealWinner();
     });
     nextButton = document.getElementById('next-button');
     nextButton.addEventListener('click', () => {
@@ -36,16 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     buttons.push(progressButton);
-    buttons.push(showCorrectButton);
+    buttons.push(revealWinnerButton);
     buttons.push(nextButton);
 
     console.log('Application initialized');
 });
 
-// --------------------------------------------------------------------------------------------------------------------------------
-
 function startPolling() {
-    //nextQuestion();
     socket.emit('start-polling');
     startButton.style.display = 'none';
     stopButton.style.display = 'block';
@@ -65,28 +58,20 @@ function stopPolling() {
     }
 }
 
-
 function updateProgressBar() {
     socket.emit('update-progress-bar');
 }
 
-function resetProgressBar() {
-    socket.emit('reset-progress-bar');
-}
-
-function showCorrect() {
-    socket.emit('show-correct');
+function revealWinner() {
+    socket.emit('reveal-winner');
 }
 
 function nextQuestion() {
     socket.emit('next-question');
 }
 
-// --------------------------------------------------------------------------------------------------------------------------------
-
 socket.on('question', (question) => {
     console.log('PRODUCER: Received question:', question);
-    // handle the question
 });
 
 socket.on('update-connections', (type, connectedInputs, connectedOutputs, connectedProducers) => {
@@ -121,7 +106,7 @@ socket.on('update-connections', (type, connectedInputs, connectedOutputs, connec
         let outputStatusText = document.getElementById('output-status-text');
 
         if (connectedOutputs > 0) {
-            outputStatusText.textContent = 'Output Connected';  
+            outputStatusText.textContent = 'Output Connected';
             outputStatus.classList.add('connected');
             document.getElementById('output-status-icon').style.display = 'inline-block';
         } else {
@@ -131,4 +116,3 @@ socket.on('update-connections', (type, connectedInputs, connectedOutputs, connec
         }
     }
 });
-

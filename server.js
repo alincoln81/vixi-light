@@ -36,35 +36,55 @@ app.get('/health', (req, res) => {
 // import the db.js file
 const questions = [
     {
-        question: 'What were the Rams original team colors?',
-        answers: ['Blue and White', 'Black and Red', 'Blue and Yellow'],
-        answerImages: ['blue.png', 'black.png', 'gold.png'],
-        values: [20, 50, 30],
-        correctAnswer: 1,
-        type: 'quiz'
+        question: 'Which concession snack is your favorite?',
+        answers: ['Team Hot Dog', 'Team Hamburger'],
+        answerImages: ['donte-jackson.png', 'elijah-molden.png'],
+        values: [70, 50],
+        correctAnswer: null,
+        type: 'poll'
     },
     {
-        question: 'How many total Super Bowls have the Rams played in all-time?',
-        answers: ['3 Super Bowls', '4 Super Bowls', '5 Super Bowls'],
-        answerImages: ['3.png', '4.png', '5.png'],
-        values: [25, 20, 55],
-        correctAnswer: 2,
-        type: 'quiz'
+        question: 'Which beverage is your favorite?',
+        answers: ['Team Soda', 'Team Water'],
+        answerImages: ['josh-harris.png', 'kyle-kennard.png'],
+        values: [33, 67],
+        correctAnswer: null,
+        type: 'poll'
     },
     {   
-        question: 'What is your favorite Rams uniform combo?',
-        answers: ['Home (Royal + Sol)', 'Away (White + Royal)', 'Alternate (Bone)', 'Alternate (Royal)'],
-        answerImages: ['home.png', 'away.png', 'bone.png', 'royal.png'],
-        values: [35, 15, 40, 10],
+        question: 'Which home uniform is your favorite?',
+        answers: ['Team Blue & gold', 'Team Blue & white'],
+        answerImages: ['justin-herbert.png', 'tre-harris.png'],
+        values: [37, 63],
         correctAnswer: null,
         type: 'poll'
     }
 ];
+
 let currentQuestion = 0;
 let gameActive = false;
+let votingLocked = false;
+let voteCounts = [0, 0];
 let connectedOutputs = 0;
 let connectedInputs = 0;
 let connectedProducers = 0;
+
+const QUESTION_TRANSITION_MS = 700;
+
+function getWinnerIndex() {
+    if (voteCounts[0] > voteCounts[1]) {
+        return 0;
+    }
+    if (voteCounts[1] > voteCounts[0]) {
+        return 1;
+    }
+    return 0;
+}
+
+function resetRoundState() {
+    voteCounts = [0, 0];
+    votingLocked = false;
+}
 // --------------------------------------------------------------------------------------------------------------------------------
 
 io.on('connection', (socket) => {
@@ -116,6 +136,7 @@ io.on('connection', (socket) => {
     // --------------------------------------------------------------------------------------------------------------------------------
     socket.on('start-polling', () => {
         console.log('SERVER: Starting polling', questions[currentQuestion]);
+        resetRoundState();
         io.emit('question', questions[currentQuestion]);
         gameActive = true;
     });
@@ -123,7 +144,9 @@ io.on('connection', (socket) => {
     socket.on('stop-polling', () => {
         console.log('SERVER: Stopping polling');
         currentQuestion = 0;
+        resetRoundState();
         io.emit('reset-progress-bar');
+        io.emit('unlock-voting');
         io.emit('stop-polling');
         gameActive = false;
     });
@@ -136,22 +159,48 @@ io.on('connection', (socket) => {
         console.log('SERVER: Resetting progress bar');
         io.emit('reset-progress-bar');
     });
-    socket.on('show-correct', () => {
-        console.log('SERVER: Showing correct');
-        io.emit('show-correct');
+    socket.on('reveal-winner', () => {
+        console.log('SERVER: Revealing winner');
+        votingLocked = true;
+        const winnerIndex = getWinnerIndex();
+        io.emit('lock-voting');
+        io.emit('reveal-winner', { winnerIndex, votes: [...voteCounts] });
     });
+
+    socket.on('show-correct', () => {
+        console.log('SERVER: show-correct deprecated, forwarding to reveal-winner');
+        votingLocked = true;
+        const winnerIndex = getWinnerIndex();
+        io.emit('lock-voting');
+        io.emit('reveal-winner', { winnerIndex, votes: [...voteCounts] });
+    });
+
     socket.on('next-question', () => {
-        currentQuestion++;
-        if (currentQuestion >= questions.length) {   
-            currentQuestion = 0;
-        }
-        console.log('SERVER: Resetting progress bar and loading next question', questions[currentQuestion]);
-        io.emit('reset-progress-bar');
-        io.emit('question', questions[currentQuestion]);
+        console.log('SERVER: Transitioning to next question');
+        io.emit('question-exit');
+
+        setTimeout(() => {
+            currentQuestion++;
+            if (currentQuestion >= questions.length) {
+                currentQuestion = 0;
+            }
+            resetRoundState();
+            console.log('SERVER: Loading next question', questions[currentQuestion]);
+            io.emit('reset-progress-bar');
+            io.emit('unlock-voting');
+            io.emit('question', questions[currentQuestion]);
+        }, QUESTION_TRANSITION_MS);
     });
 
     socket.on('answer', (answer) => {
+        if (votingLocked || !gameActive) {
+            return;
+        }
+        if (answer !== 0 && answer !== 1) {
+            return;
+        }
         console.log('SERVER: Answer received', answer);
+        voteCounts[answer]++;
         io.emit('answer', answer);
     });
 });
