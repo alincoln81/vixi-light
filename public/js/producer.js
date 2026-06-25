@@ -9,7 +9,60 @@ var buttons = [];
 
 socket.emit('register', 'producer');
 
+const PAGE_LINKS = {
+    input: window.location.origin + '/input',
+    output: window.location.origin + '/output'
+};
+
+function setupPageLinks() {
+    const inputUrlEl = document.getElementById('input-page-url');
+    const outputUrlEl = document.getElementById('output-page-url');
+
+    inputUrlEl.href = PAGE_LINKS.input;
+    inputUrlEl.textContent = PAGE_LINKS.input;
+    outputUrlEl.href = PAGE_LINKS.output;
+    outputUrlEl.textContent = PAGE_LINKS.output;
+
+    document.getElementById('open-input-link').addEventListener('click', () => {
+        window.open(PAGE_LINKS.input, '_blank', 'noopener,noreferrer');
+    });
+
+    document.getElementById('open-output-link').addEventListener('click', () => {
+        window.open(PAGE_LINKS.output, '_blank', 'noopener,noreferrer');
+    });
+
+    document.getElementById('copy-input-link').addEventListener('click', () => {
+        copyPageLink(PAGE_LINKS.input, 'copy-input-link');
+    });
+
+    document.getElementById('copy-output-link').addEventListener('click', () => {
+        copyPageLink(PAGE_LINKS.output, 'copy-output-link');
+    });
+}
+
+function copyPageLink(url, buttonId) {
+    const button = document.getElementById(buttonId);
+    const icon = button.querySelector('.mdi');
+
+    navigator.clipboard.writeText(url).then(() => {
+        button.classList.add('is-copied');
+        button.title = 'Copied!';
+        icon.classList.remove('mdi-content-copy');
+        icon.classList.add('mdi-check');
+
+        window.setTimeout(() => {
+            button.classList.remove('is-copied');
+            button.title = button.getAttribute('aria-label');
+            icon.classList.remove('mdi-check');
+            icon.classList.add('mdi-content-copy');
+        }, 1500);
+    }).catch((err) => {
+        console.error('Failed to copy link:', err);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    setupPageLinks();
     startButton = document.getElementById('start-button');
     stopButton = document.getElementById('stop-button');
     startButton.addEventListener('click', () => {
