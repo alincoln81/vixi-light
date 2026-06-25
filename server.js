@@ -5,11 +5,17 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
+
+app.set('trust proxy', 1);
+
 const io = socketIo(server, {
     cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
+        origin: '*',
+        methods: ['GET', 'POST']
+    },
+    transports: ['polling', 'websocket'],
+    pingTimeout: 60000,
+    pingInterval: 25000
 });
 
 // Serve static files from the public directory
@@ -20,12 +26,24 @@ app.get('/producer', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'producer.html'));
 });
 
+app.get('/producer/', (req, res) => {
+    res.redirect(301, '/producer');
+});
+
 app.get('/input', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'input.html'));
 });
 
+app.get('/input/', (req, res) => {
+    res.redirect(301, '/input');
+});
+
 app.get('/output', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'output.html'));
+});
+
+app.get('/output/', (req, res) => {
+    res.redirect(301, '/output');
 });
 
 // Add a health check endpoint

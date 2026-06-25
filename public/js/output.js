@@ -278,7 +278,7 @@ function populateQuestion(question) {
 
         const img = document.getElementById('answer-image-' + (i + 1));
         if (hasAnswerImage(currentQuestion, i)) {
-            img.style.backgroundImage = 'url(../assets/' + currentQuestion.answerImages[i] + ')';
+            img.style.backgroundImage = 'url(/assets/' + currentQuestion.answerImages[i] + ')';
         } else {
             img.style.backgroundImage = '';
         }

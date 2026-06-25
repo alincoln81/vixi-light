@@ -212,7 +212,7 @@ function updateInputAnswerImages(question) {
         }
 
         if (hasAnswerImage(question, i)) {
-            img.style.backgroundImage = 'url(assets/' + question.answerImages[i] + ')';
+            img.style.backgroundImage = 'url(/assets/' + question.answerImages[i] + ')';
             img.classList.add('input-answer-image--visible');
             btn.classList.add('uk-button-answer--with-image');
         } else {
